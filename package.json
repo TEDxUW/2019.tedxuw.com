@@ -1,0 +1,41 @@
+{
+  "name": "xie-starter",
+  "private": true,
+  "description": "Starter",
+  "version": "0.1.0",
+  "author": "Alex Xie <hi@alexieyizhe.me>",
+  "license": "MIT",
+  "dependencies": {
+    "gatsby": "^2.3.5",
+    "gatsby-plugin-react-helmet": "^3.0.11",
+    "gatsby-plugin-styled-components": "^3.0.7",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-helmet": "^5.2.0",
+    "styled-components": "^4.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-react": "^7.12.4",
+    "eslint-plugin-react-hooks": "^1.6.0",
+    "gatsby-plugin-alias-imports": "^1.0.5",
+    "husky": "^1.3.1",
+    "lint-staged": "^8.1.5",
+    "prettier": "^1.16.4"
+  },
+  "scripts": {
+    "start": "npm run develop",
+    "develop": "gatsby develop",
+    "lint": "eslint --fix src --ext js,jsx",
+    "format": "prettier --write src/**/*.{js,jsx}",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
+    "build": "gatsby build",
+    "serve": "gatsby serve"
+  }
+}
