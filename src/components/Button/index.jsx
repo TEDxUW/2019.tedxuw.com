@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Icon from "~components/Icon";
 
 const StyledButton = styled.button`
   padding: ${props => props.theme.app.padding};
@@ -20,7 +21,7 @@ const StyledButton = styled.button`
 
 const Button = ({
   className,
-  label,
+  label, // text on button
   icon,
   disabled,
   color = "white",
@@ -29,6 +30,7 @@ const Button = ({
   onClickHandler = () => {},
 }) => (
   <StyledButton
+    // pass the needed props to the StyledButton defined above
     className={className}
     type={type}
     disabled={disabled}
@@ -36,9 +38,8 @@ const Button = ({
     backgroundColor={backgroundColor}
     onClick={disabled ? null : onClickHandler}
   >
-    <span>{label}</span>
-    <span>{icon}</span>
-    {/* TODO: make icon actual font awesome icon */}
+    {label && <span>{label}</span> /* only render label if it's specified */}
+    {icon && <Icon name={icon} />}
   </StyledButton>
 );
 

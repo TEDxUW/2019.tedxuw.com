@@ -19,6 +19,7 @@ export default () => (
       {comingSoonData.title}
       <Button
         label="Subscribe"
+        icon="arrow-right"
         color="white"
         backgroundColor="primary"
         type="submit"
