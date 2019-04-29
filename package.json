@@ -1,11 +1,17 @@
 {
-  "name": "xie-starter",
+  "name": "tedxuw-site",
   "private": true,
-  "description": "Starter",
+  "description": "Official website of TEDxUW.",
   "version": "0.1.0",
-  "author": "Alex Xie <hi@alexieyizhe.me>",
+  "contributors": [
+    "Alex Xie <hi@alexieyizhe.me>",
+    "James Zhao Lu <james.zhao.lu@gmail.com>"
+  ],
   "license": "MIT",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.17",
+    "@fortawesome/free-solid-svg-icons": "^5.8.1",
+    "@fortawesome/react-fontawesome": "^0.1.4",
     "gatsby": "^2.3.5",
     "gatsby-plugin-react-helmet": "^3.0.11",
     "gatsby-plugin-styled-components": "^3.0.7",

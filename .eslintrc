@@ -11,6 +11,7 @@
   "rules": {
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
+    "react/prop-types": "off",
     "prefer-arrow-callback": "error",
     "import/prefer-default-export": "off",
     "arrow-body-style": ["error", "as-needed"],
