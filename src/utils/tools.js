@@ -1,10 +1,12 @@
 import { css } from "styled-components";
 
 export const mediaSizes = {
-  wideScreen: 1440,
-  tablet: 900,
-  phone: 700,
-  smallPhone: 400,
+  large: 1440,
+  medium: 1024,
+  tablet: 768,
+  largeMobile: 425,
+  mobile: 375,
+  smallMobile: 320,
 };
 
 // Iterate through the sizes and create a media query for each size

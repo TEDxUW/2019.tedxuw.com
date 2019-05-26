@@ -1,6 +1,8 @@
 import React, { useState, useCallback } from "react";
 import styled from "styled-components";
 
+import { mediaQueryFor } from "~utils/tools";
+
 import Button from "~components/Button";
 
 const Container = styled.div`
@@ -16,6 +18,10 @@ const Container = styled.div`
   &:hover {
     box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.15);
   }
+
+  ${mediaQueryFor.largeMobile`
+    width: 100%;
+  `}
 `;
 
 const SignupInput = styled.input`
@@ -36,6 +42,14 @@ const SignupInput = styled.input`
   &:focus {
     outline: none;
   }
+
+  ${mediaQueryFor.tablet`
+    width: 70%;
+  `}
+
+  ${mediaQueryFor.largeMobile`
+    width: 60%;
+  `}
 `;
 
 const SignupButton = styled(Button)`
@@ -45,6 +59,14 @@ const SignupButton = styled(Button)`
 
   border-radius: ${props =>
     `0 ${props.theme.app.borderRadius} ${props.theme.app.borderRadius} 0`};
+
+  ${mediaQueryFor.tablet`
+    width: 30%;
+  `}
+
+  ${mediaQueryFor.largeMobile`
+    width: 40%;
+  `}
 `;
 
 const MailingListSignup = () => {

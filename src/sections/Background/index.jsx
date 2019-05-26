@@ -31,7 +31,7 @@ const Container = styled.div`
   }
 `;
 
-const Triangle = styled.div`
+const Triangle = styled.span`
   position: absolute;
   top: ${props => props.y}px;
   left: ${props => props.x}px;

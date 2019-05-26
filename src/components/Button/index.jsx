@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Icon from "~components/Icon";
+import { mediaQueryFor } from "~utils/tools";
 
 const StyledButton = styled.button`
   box-sizing: border-box;
@@ -20,6 +21,10 @@ const StyledButton = styled.button`
 
   & > span {
     padding-left: 10px;
+
+    ${mediaQueryFor.largeMobile`
+      padding-left: 5px;
+    `}
   }
 
   & .icon {

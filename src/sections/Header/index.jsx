@@ -1,10 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-import Link from "~components/Link";
-
 import comingSoonData from "~static/data/coming-soon";
 import ImgLogo from "~static/img/tedx_logo.svg";
+import { mediaQueryFor } from "~utils/tools";
+
+import { AnimLink } from "~components/Link";
 
 const Container = styled.section`
   display: flex;
@@ -14,37 +15,30 @@ const Container = styled.section`
   height: 13%;
 
   color: black;
+
+  & img {
+    ${mediaQueryFor.tablet`
+      max-width: 30%;
+    `}
+  }
+
+  ${mediaQueryFor.largeMobile`
+    & img {
+      max-width: 65%;
+    }
+
+    & .headerLinksContainer {
+      display: none;
+    }
+  `}
 `;
 
-const HeaderLink = styled(Link)`
+const HeaderLink = styled(AnimLink)`
   margin-left: 35px;
 
-  &:focus,
-  &:hover {
-    outline: none;
-  }
-
-  &:hover:before,
-  &:focus:before {
-    visibility: visible;
-    transform: scaleX(1);
-  }
-
-  &:before {
-    content: "";
-    position: absolute;
-
-    width: 100%;
-    height: 4px;
-    bottom: -6px;
-    left: 0;
-
-    background-color: ${props =>
-      props.theme.colors[props.hoverColor] || props.hoverColor};
-    visibility: hidden;
-    transform: scaleX(0);
-    transition: all 150ms ease 0s;
-  }
+  ${mediaQueryFor.tablet`
+    margin-left: 15px;
+  `}
 `;
 
 const Header = () => (
