@@ -24,6 +24,7 @@
           ["~components", "./src/components"],
           ["~utils", "./src/utils"],
           ["~pages", "./src/pages"],
+          ["~sections", "./src/sections"],
           ["~static", "./src/static"]
         ],
         "extensions": [".js", ".jsx", ".json"]

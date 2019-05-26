@@ -2,8 +2,9 @@ import React from "react";
 import styled, { ThemeProvider } from "styled-components";
 import GlobalStyles from "~components/GlobalStyles";
 import GlobalHead from "~components/GlobalHead";
-import Header from "~pages/Header";
-import Signup from "~pages/Signup";
+import Header from "~sections/Header";
+import Main from "~sections/Main";
+import Background from "~sections/Background";
 import theme from "~utils/theme";
 
 const PageContainer = styled.div`
@@ -14,8 +15,6 @@ const PageContainer = styled.div`
   padding: 50px;
 `;
 
-const Background = styled.div``;
-
 export default () => (
   <ThemeProvider theme={theme}>
     <>
@@ -23,9 +22,9 @@ export default () => (
       <GlobalHead />
       <PageContainer>
         <Header />
-        <Signup />
-        <Background>heres the background and imgs</Background>
+        <Main />
       </PageContainer>
+      <Background />
     </>
   </ThemeProvider>
 );

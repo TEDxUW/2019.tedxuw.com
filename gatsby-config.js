@@ -13,6 +13,7 @@ module.exports = {
           "~src": "src",
           "~components": "src/components",
           "~pages": "src/pages",
+          "~sections": "src/sections",
           "~static": "src/static",
           "~utils": "src/utils",
         },

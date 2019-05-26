@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Icon from "~components/Icon";
 
 const StyledButton = styled.button`
+  box-sizing: border-box;
   padding: ${props => props.theme.app.padding};
 
   cursor: pointer;
@@ -16,6 +17,10 @@ const StyledButton = styled.button`
   // remove annoying blue Chrome outline when focused
   &:focus {
     outline: none;
+  }
+
+  & span {
+    padding-right: 10px;
   }
 `;
 
