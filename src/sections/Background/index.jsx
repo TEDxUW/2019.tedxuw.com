@@ -6,9 +6,13 @@ import BackgroundImageBottom from "~static/img/bg_2.svg";
 import TriangleImg from "~static/img/triangle.svg";
 
 const trianglePositions = [
-  { x: 20, y: 30, d: 3 },
-  { x: 100, y: 300, d: 4.3 },
-  { x: 204, y: 100, d: 5.9 },
+  { x: 220, y: 345, d: 3 },
+  { x: 200, y: 640, d: 4.3 },
+  { x: 800, y: 315, d: 5.9 },
+  { x: 650, y: 590, d: 4.6 },
+  { x: 1080, y: 330, d: 3.6 },
+  { x: 1175, y: 480, d: 3 },
+
 ];
 
 const Container = styled.div`
@@ -33,33 +37,27 @@ const Triangle = styled.span`
   top: ${props => props.y}px;
   left: ${props => props.x}px;
 
-  width: 15px;
-  height: 15px;
+  width: 60px;
+  height: 60px;
+
+  transform: rotate(${props => props.animDuration * 40 + Math.random() * 50}deg) scale(${props => props.animDuration / 10});
 
   & > img {
-    max-width: 100%;
-    max-height: 100%;
+    width: 100%;
     animation: float ${props => props.animDuration}s ease-in-out infinite;
 
     @keyframes float {
       0% {
         transform: translatey(0px);
       }
-      35% {
-        transform: translatey(-3px);
-      }
-      75% {
-        transform: translatey(2px);
+      45% {
+        transform: translatey(-10px);
       }
       100% {
         transform: translatey(0px);
       }
     }
   }
-
-  transform: rotate(${props => props.animDuration * 40 + Math.random() * 50}deg);
-  
-  
 `;
 
 const Background = () => (

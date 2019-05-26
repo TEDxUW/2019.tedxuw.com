@@ -12,6 +12,8 @@ const PageContainer = styled.div`
   flex-direction: column;
   justify-content: flex-start;
 
+  position: relative;
+  height: 100vh;
   padding: 50px;
 `;
 

@@ -14,14 +14,24 @@ const StyledButton = styled.button`
   background-color: ${props =>
     props.theme.colors[props.backgroundColor] || props.backgroundColor};
 
-  // remove annoying blue Chrome outline when focused
   &:focus {
     outline: none;
   }
 
-  & span {
-    padding-right: 10px;
+  & > span {
+    padding-left: 10px;
   }
+
+  & .icon {
+    display: inline-block;
+
+    transition: transform 250ms ease;
+    transform: translateX(150px); 
+  }
+
+  &:focus .icon, &:hover .icon {
+    transform: translateX(0);
+  }   
 `;
 
 const Button = ({
@@ -32,6 +42,7 @@ const Button = ({
   color = "white",
   backgroundColor = "black",
   type = "button",
+  tabIndex,
   onClickHandler = () => {},
 }) => (
   <StyledButton
@@ -41,10 +52,11 @@ const Button = ({
     disabled={disabled}
     color={color}
     backgroundColor={backgroundColor}
+    tabIndex={tabIndex}
     onClick={disabled ? null : onClickHandler}
   >
-    {label && <span>{label}</span> /* only render label if it's specified */}
-    {icon && <Icon name={icon} />}
+    {label && <span className="label">{label}</span> /* only render label if it's specified */}
+    {icon && <span className="icon"><Icon name={icon} /></span>}
   </StyledButton>
 );
 

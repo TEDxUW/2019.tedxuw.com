@@ -16,5 +16,22 @@
       "label": "Contact Us",
       "link": "mailto:tedxuwaterloo@gmail.com"
     }
+  ],
+  "footerLinks": [
+    {
+      "name": "Facebook",
+      "icon": ["fab", "facebook-square"],
+      "linkTo": "https://www.facebook.com/TEDxUW/"
+    },
+    {
+      "name": "Instagram",
+      "icon": ["fab", "instagram"],
+      "linkTo": "https://www.instagram.com/tedxuw/"
+    },
+    {
+      "name": "LinkedIn",
+      "icon": ["fab", "linkedin"],
+      "linkTo": "https://www.linkedin.com/company/tedxuw"
+    }
   ]
 }

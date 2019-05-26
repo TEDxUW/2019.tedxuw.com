@@ -8,8 +8,8 @@ const UnstyledLink = styled.a`
   position: relative;
 `;
 
-const Link = ({ className, href, children, hoverColor = "black" }) => (
-  <UnstyledLink className={className} href={href} hoverColor={hoverColor}>
+const Link = ({ className, href, children, hoverColor = "black", tabIndex }) => (
+  <UnstyledLink className={className} href={href} hoverColor={hoverColor} tabIndex={tabIndex}>
     {children}
   </UnstyledLink>
 );

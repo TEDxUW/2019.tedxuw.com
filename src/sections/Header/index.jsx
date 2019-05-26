@@ -6,9 +6,12 @@ import Link from "~components/Link";
 import comingSoonData from "~static/data/coming-soon";
 import ImgLogo from "~static/img/tedx_logo.svg";
 
-const Container = styled.div`
+const Container = styled.section`
   display: flex;
   justify-content: space-between;
+  align-items: start;
+
+  height: 13%;
 
   color: black;
 `;
@@ -16,7 +19,11 @@ const Container = styled.div`
 const HeaderLink = styled(Link)`
   margin-left: 35px;
 
-  &:hover:before {
+  &:focus, &:hover {
+    outline: none;
+  }
+  
+  &:hover:before, &:focus:before {
     visibility: visible;
     transform: scaleX(1);
   }
@@ -34,7 +41,7 @@ const HeaderLink = styled(Link)`
       props.theme.colors[props.hoverColor] || props.hoverColor};
     visibility: hidden;
     transform: scaleX(0);
-    transition: all 0.3s ease-in-out 0s;
+    transition: all 150ms ease 0s;
   }
 `;
 
@@ -42,11 +49,12 @@ const Header = () => (
   <Container>
     <img src={ImgLogo} alt="TEDxUW Logo" />
     <div className="headerLinksContainer">
-      {comingSoonData.headerLinks.map(linkData => (
+      {comingSoonData.headerLinks.map((linkData,i) => (
         <HeaderLink
           key={linkData.label}
           href={linkData.link}
           hoverColor="primary"
+          tabIndex={i + 1}
         >
           {linkData.label.toUpperCase()}
         </HeaderLink>
