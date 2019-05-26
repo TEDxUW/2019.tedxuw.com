@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import BackgroundImageTop from "~static/img/bg_1.svg";
 import BackgroundImageBottom from "~static/img/bg_2.svg";
+import TriangleImg from "~static/img/triangle.svg";
 
 const trianglePositions = [
   { x: 20, y: 30, d: 3 },
@@ -35,20 +36,30 @@ const Triangle = styled.span`
   width: 15px;
   height: 15px;
 
-  background-color: ${props => props.theme.colors.primary};
-  animation: float ${props => props.animDuration}s ease-in-out infinite;
+  & > img {
+    max-width: 100%;
+    max-height: 100%;
+    animation: float ${props => props.animDuration}s ease-in-out infinite;
 
-  @keyframes float {
-    0% {
-      transform: translatey(0px);
-    }
-    50% {
-      transform: translatey(-20px);
-    }
-    100% {
-      transform: translatey(0px);
+    @keyframes float {
+      0% {
+        transform: translatey(0px);
+      }
+      35% {
+        transform: translatey(-3px);
+      }
+      75% {
+        transform: translatey(2px);
+      }
+      100% {
+        transform: translatey(0px);
+      }
     }
   }
+
+  transform: rotate(${props => props.animDuration * 40 + Math.random() * 50}deg);
+  
+  
 `;
 
 const Background = () => (
@@ -58,7 +69,9 @@ const Background = () => (
       <img src={BackgroundImageBottom} alt="Another background shape" />
     </Container>
     {trianglePositions.map(({ x, y, d }) => (
-      <Triangle x={x} y={y} animDuration={d} />
+      <Triangle x={x} y={y} animDuration={d}>
+        <img src={TriangleImg}  />
+      </Triangle>
     ))}
   </>
   
