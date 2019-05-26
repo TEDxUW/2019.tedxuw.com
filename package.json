@@ -42,7 +42,7 @@
     "start": "npm run develop",
     "develop": "gatsby develop",
     "lint": "eslint --fix src --ext js,jsx",
-    "format": "prettier --write src/**/*.{js,jsx}",
+    "format": "prettier --write 'src/**/*.{js,jsx}'",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
     "build": "gatsby build",
     "serve": "gatsby serve"

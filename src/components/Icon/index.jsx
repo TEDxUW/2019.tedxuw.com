@@ -12,12 +12,12 @@ import {
   faChevronDown,
   faChevronCircleLeft,
   faArrowRight,
-  faTrophy
+  faTrophy,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebookSquare,
   faInstagram,
-  faLinkedin
+  faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 

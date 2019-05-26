@@ -26,12 +26,13 @@ const StyledButton = styled.button`
     display: inline-block;
 
     transition: transform 250ms ease;
-    transform: translateX(150px); 
+    transform: translateX(150px);
   }
 
-  &:focus .icon, &:hover .icon {
+  &:focus .icon,
+  &:hover .icon {
     transform: translateX(0);
-  }   
+  }
 `;
 
 const Button = ({
@@ -43,7 +44,7 @@ const Button = ({
   backgroundColor = "black",
   type = "button",
   tabIndex,
-  onClickHandler = () => {},
+  onClick = () => {},
 }) => (
   <StyledButton
     // pass the needed props to the StyledButton defined above
@@ -53,10 +54,16 @@ const Button = ({
     color={color}
     backgroundColor={backgroundColor}
     tabIndex={tabIndex}
-    onClick={disabled ? null : onClickHandler}
+    onClick={disabled ? null : onClick}
   >
-    {label && <span className="label">{label}</span> /* only render label if it's specified */}
-    {icon && <span className="icon"><Icon name={icon} /></span>}
+    {label && (
+      <span className="label">{label}</span>
+    ) /* only render label if it's specified */}
+    {icon && (
+      <span className="icon">
+        <Icon name={icon} />
+      </span>
+    )}
   </StyledButton>
 );
 

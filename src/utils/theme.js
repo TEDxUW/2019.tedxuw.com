@@ -7,6 +7,7 @@ const theme = {
   },
   // app specific defaults
   app: {
+    font: "Didact Gothic",
     borderRadius: "10px",
     padding: "20px",
   },

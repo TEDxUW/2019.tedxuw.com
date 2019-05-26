@@ -19,11 +19,13 @@ const Container = styled.section`
 const HeaderLink = styled(Link)`
   margin-left: 35px;
 
-  &:focus, &:hover {
+  &:focus,
+  &:hover {
     outline: none;
   }
-  
-  &:hover:before, &:focus:before {
+
+  &:hover:before,
+  &:focus:before {
     visibility: visible;
     transform: scaleX(1);
   }
@@ -33,8 +35,8 @@ const HeaderLink = styled(Link)`
     position: absolute;
 
     width: 100%;
-    height: 5px;
-    bottom: -5px;
+    height: 4px;
+    bottom: -6px;
     left: 0;
 
     background-color: ${props =>
@@ -49,7 +51,7 @@ const Header = () => (
   <Container>
     <img src={ImgLogo} alt="TEDxUW Logo" />
     <div className="headerLinksContainer">
-      {comingSoonData.headerLinks.map((linkData,i) => (
+      {comingSoonData.headerLinks.map((linkData, i) => (
         <HeaderLink
           key={linkData.label}
           href={linkData.link}

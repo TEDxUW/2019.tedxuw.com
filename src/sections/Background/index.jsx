@@ -12,7 +12,6 @@ const trianglePositions = [
   { x: 650, y: 590, d: 4.6 },
   { x: 1080, y: 330, d: 3.6 },
   { x: 1175, y: 480, d: 3 },
-
 ];
 
 const Container = styled.div`
@@ -40,7 +39,8 @@ const Triangle = styled.span`
   width: 60px;
   height: 60px;
 
-  transform: rotate(${props => props.animDuration * 40 + Math.random() * 50}deg) scale(${props => props.animDuration / 10});
+  transform: rotate(${props => props.animDuration * 40 + Math.random() * 50}deg)
+    scale(${props => props.animDuration / 10});
 
   & > img {
     width: 100%;
@@ -67,12 +67,11 @@ const Background = () => (
       <img src={BackgroundImageBottom} alt="Another background shape" />
     </Container>
     {trianglePositions.map(({ x, y, d }) => (
-      <Triangle x={x} y={y} animDuration={d}>
-        <img src={TriangleImg}  />
+      <Triangle key={`${x}-${y}-${d}`} x={x} y={y} animDuration={d}>
+        <img src={TriangleImg} alt="A floating triangle" />
       </Triangle>
     ))}
   </>
-  
 );
 
 export default Background;
