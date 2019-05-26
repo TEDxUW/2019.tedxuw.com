@@ -21,18 +21,5 @@ module.exports = {
         extensions: ["js", "jsx"],
       },
     },
-    {
-      resolve: `gatsby-transformer-json`,
-      options: {
-        typeName: `Json`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `data`,
-        path: `${__dirname}/src/static/data`,
-      },
-    },
   ],
 };
