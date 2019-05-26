@@ -31,11 +31,12 @@ const Container = styled.div`
   }
 `;
 
-const Triangle = styled.span`
+const Triangle = styled.div`
   position: absolute;
   top: ${props => props.y}px;
   left: ${props => props.x}px;
 
+  display: inline-block;
   width: 60px;
   height: 60px;
 
@@ -61,17 +62,15 @@ const Triangle = styled.span`
 `;
 
 const Background = () => (
-  <>
-    <Container>
-      <img src={BackgroundImageTop} alt="Background shape" />
-      <img src={BackgroundImageBottom} alt="Another background shape" />
-    </Container>
+  <Container>
+    <img src={BackgroundImageTop} alt="Background shape" />
+    <img src={BackgroundImageBottom} alt="Another background shape" />
     {trianglePositions.map(({ x, y, d }) => (
       <Triangle key={`${x}-${y}-${d}`} x={x} y={y} animDuration={d}>
         <img src={TriangleImg} alt="A floating triangle" />
       </Triangle>
     ))}
-  </>
+  </Container>
 );
 
 export default Background;
