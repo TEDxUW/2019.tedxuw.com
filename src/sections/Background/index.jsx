@@ -4,6 +4,7 @@ import styled from "styled-components";
 import BackgroundImageTop from "~static/img/bg_1.svg";
 import BackgroundImageBottom from "~static/img/bg_2.svg";
 import TriangleImg from "~static/img/triangle.svg";
+import { mediaQueryFor } from "~utils/tools";
 
 const triangles = [
   { x: 75, y: -45, d: 5.4 }, // top center
@@ -71,6 +72,24 @@ const Triangle = styled.span`
       }
     }
   }
+
+  ${mediaQueryFor.tablet`
+    transform: ${({ x, y, animDuration }) =>
+      `
+      translate(${x / 1.4}px, ${y / 1.1}px)
+      rotate(${animDuration * 40 + Math.random() * 50}deg) 
+      scale(${animDuration / 13})
+    `};
+  `}
+
+  ${mediaQueryFor.largeMobile`
+    transform: ${({ x, y, animDuration }) =>
+      `
+      translate(${x / 3}px, ${y / 1.5 + 25}px)
+      rotate(${animDuration * 40 + Math.random() * 50}deg) 
+      scale(${animDuration / 16})
+    `};
+  `}
 `;
 
 const Background = () => (
