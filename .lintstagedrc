@@ -1,8 +1,8 @@
 {
-  "*.{js,jsx}": [
-    "eslint"
-  ],
   "*.{js,jsx,json,md}": [
-    "prettier --list-different"
+    "npm run format"
+  ],
+  "*.{js,jsx}": [
+    "npm run lint"
   ]
 }

@@ -1,8 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import Icon from "~components/Icon";
+import { mediaQueryFor } from "~utils/tools";
 
 const StyledButton = styled.button`
+  box-sizing: border-box;
   padding: ${props => props.theme.app.padding};
 
   cursor: pointer;
@@ -13,9 +15,28 @@ const StyledButton = styled.button`
   background-color: ${props =>
     props.theme.colors[props.backgroundColor] || props.backgroundColor};
 
-  // remove annoying blue Chrome outline when focused
   &:focus {
     outline: none;
+  }
+
+  & > span {
+    padding-left: 10px;
+
+    ${mediaQueryFor.largeMobile`
+      padding-left: 5px;
+    `}
+  }
+
+  & .icon {
+    display: inline-block;
+
+    transition: transform 250ms ease;
+    transform: translateX(150px);
+  }
+
+  &:focus .icon,
+  &:hover .icon {
+    transform: translateX(0);
   }
 `;
 
@@ -27,7 +48,8 @@ const Button = ({
   color = "white",
   backgroundColor = "black",
   type = "button",
-  onClickHandler = () => {},
+  tabIndex,
+  onClick = () => {},
 }) => (
   <StyledButton
     // pass the needed props to the StyledButton defined above
@@ -36,10 +58,17 @@ const Button = ({
     disabled={disabled}
     color={color}
     backgroundColor={backgroundColor}
-    onClick={disabled ? null : onClickHandler}
+    tabIndex={tabIndex}
+    onClick={disabled ? null : onClick}
   >
-    {label && <span>{label}</span> /* only render label if it's specified */}
-    {icon && <Icon name={icon} />}
+    {label && (
+      <span className="label">{label}</span>
+    ) /* only render label if it's specified */}
+    {icon && (
+      <span className="icon">
+        <Icon name={icon} />
+      </span>
+    )}
   </StyledButton>
 );
 

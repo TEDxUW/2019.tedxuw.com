@@ -1,19 +1,29 @@
 import React from "react";
 import styled, { ThemeProvider } from "styled-components";
+
 import GlobalStyles from "~components/GlobalStyles";
 import GlobalHead from "~components/GlobalHead";
+
+import Header from "~sections/Header";
+import Main from "~sections/Main";
+import Background from "~sections/Background";
+
 import theme from "~utils/theme";
-import comingSoonData from "~static/data/coming-soon";
+import { mediaQueryFor } from "~utils/tools";
 
-import Button from "~components/Button";
+const PageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 
-const PageContainer = styled.div``;
+  position: relative;
+  height: 100vh;
+  padding: 50px;
 
-const Header = styled.div``;
-
-const Signup = styled.div``;
-
-const Background = styled.div``;
+  ${mediaQueryFor.largeMobile`
+    padding: 30px;
+  `}
+`;
 
 export default () => (
   <ThemeProvider theme={theme}>
@@ -21,19 +31,10 @@ export default () => (
       <GlobalStyles />
       <GlobalHead />
       <PageContainer>
-        <Header>heres the title</Header>
-        <Signup>
-          {comingSoonData.title}
-          <Button
-            label="Subscribe"
-            icon="arrow-right"
-            color="white"
-            backgroundColor="primary"
-            type="submit"
-          />
-        </Signup>
-        <Background>heres the background and imgs</Background>
+        <Header />
+        <Main />
       </PageContainer>
+      <Background />
     </>
   </ThemeProvider>
 );

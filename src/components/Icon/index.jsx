@@ -14,6 +14,11 @@ import {
   faArrowRight,
   faTrophy,
 } from "@fortawesome/free-solid-svg-icons";
+import {
+  faFacebookSquare,
+  faInstagram,
+  faLinkedin,
+} from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // Add these FontAwesome icons individually to our 'library' to reduce bundle size when building
@@ -29,7 +34,10 @@ library.add(
   faChevronDown,
   faChevronCircleLeft,
   faArrowRight,
-  faTrophy
+  faTrophy,
+  faFacebookSquare,
+  faInstagram,
+  faLinkedin
 );
 
 const Icon = ({ name, size = "1x" }) => (

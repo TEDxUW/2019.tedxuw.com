@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet";
 const GlobalHead = () => (
   <Helmet>
     <meta charSet="utf-8" />
-    <title>Site Title</title>
+    <title>TEDxUW</title>
   </Helmet>
 );
 
