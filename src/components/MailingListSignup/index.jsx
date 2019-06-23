@@ -11,6 +11,7 @@ const Container = styled.div`
   align-items: center;
 
   width: 550px;
+  margin: 0 auto;
 
   border-radius: ${props => props.theme.app.borderRadius};
 

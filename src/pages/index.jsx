@@ -6,6 +6,7 @@ import GlobalHead from "~components/GlobalHead";
 
 import Header from "~sections/Header";
 import Main from "~sections/Main";
+import Footer from "~sections/Footer";
 import Background from "~sections/Background";
 
 import theme from "~utils/theme";
@@ -33,6 +34,7 @@ export default () => (
       <PageContainer>
         <Header />
         <Main />
+        <Footer />
       </PageContainer>
       <Background />
     </>
