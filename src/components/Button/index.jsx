@@ -1,11 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import Icon from "~components/Icon";
-import { mediaQueryFor } from "~utils/tools";
 
 const StyledButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   box-sizing: border-box;
-  padding: ${props => props.theme.app.padding};
+
+  padding: 0;
 
   cursor: pointer;
   border: none;
@@ -15,23 +18,31 @@ const StyledButton = styled.button`
   background-color: ${props =>
     props.theme.colors[props.backgroundColor] || props.backgroundColor};
 
-  &:focus {
-    outline: none;
+  & > div {
+    display: flex;
+    justify-content: space-between;
   }
 
-  & > span {
-    padding-left: 10px;
-
-    ${mediaQueryFor.largeMobile`
-      padding-left: 5px;
-    `}
+  & .label {
+    transition: transform 250ms;
+    ${({ hasIcon }) => hasIcon && "transform: translateX(5px);"}
   }
 
   & .icon {
     display: inline-block;
+    margin-left: 5px;
 
-    transition: transform 250ms ease;
+    transition: transform 250ms;
     transform: translateX(150px);
+  }
+
+  &:focus,
+  &:hover {
+    outline: none;
+
+    & .label {
+      transform: translateX(0);
+    }
   }
 
   &:focus .icon,
@@ -56,19 +67,22 @@ const Button = ({
     className={className}
     type={type}
     disabled={disabled}
+    hasIcon={icon}
     color={color}
     backgroundColor={backgroundColor}
     tabIndex={tabIndex}
     onClick={disabled ? null : onClick}
   >
-    {label && (
-      <span className="label">{label}</span>
-    ) /* only render label if it's specified */}
-    {icon && (
-      <span className="icon">
-        <Icon name={icon} />
-      </span>
-    )}
+    <div>
+      {label && (
+        <span className="label">{label}</span>
+      ) /* only render label if it's specified */}
+      {icon && (
+        <span className="icon">
+          <Icon name={icon} />
+        </span>
+      )}
+    </div>
   </StyledButton>
 );
 

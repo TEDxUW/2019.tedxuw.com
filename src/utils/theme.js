@@ -2,7 +2,7 @@ const theme = {
   // style guide theme colors
   colors: {
     primary: "#E62B1E",
-    grey: "#dddddd",
+    grey: "#DDDDDD",
     black: "#000000",
   },
   // app specific defaults
