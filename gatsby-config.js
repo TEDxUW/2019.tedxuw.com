@@ -8,6 +8,13 @@ module.exports = {
     { resolve: `gatsby-plugin-react-helmet` },
     { resolve: `gatsby-plugin-styled-components` },
     {
+      resolve: `gatsby-plugin-favicon`,
+      options: {
+        logo: "./src/static/img/favicon.png",
+      },
+    },
+    { resolve: `gatsby-plugin-offline` },
+    {
       resolve: `gatsby-plugin-alias-imports`,
       options: {
         alias: {
