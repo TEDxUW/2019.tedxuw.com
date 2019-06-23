@@ -122,6 +122,7 @@ const Main = () => (
       <div className="socialContainer">
         {comingSoonData.footerLinks.map((social, i) => (
           <Link
+            key={social.name}
             href={social.linkTo}
             alt={social.name}
             tabIndex={i + TAB_INDEX_OFFSET + 1}

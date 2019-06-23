@@ -5,13 +5,13 @@ import BackgroundImageTop from "~static/img/bg_1.svg";
 import BackgroundImageBottom from "~static/img/bg_2.svg";
 import TriangleImg from "~static/img/triangle.svg";
 
-const trianglePositions = [
-  { x: 220, y: 345, d: 3 },
-  { x: 200, y: 640, d: 4.3 },
-  { x: 800, y: 315, d: 5.9 },
-  { x: 650, y: 590, d: 4.6 },
-  { x: 1080, y: 330, d: 3.6 },
-  { x: 1175, y: 480, d: 3 },
+const triangles = [
+  { x: 75, y: -45, d: 5.4 }, // top center
+  { x: -385, y: -52, d: 4.1 }, // top left
+  { x: -45, y: 200, d: 3.8 }, // bottom center
+  { x: -420, y: 240, d: 3.6 }, // bottom left
+  { x: 460, y: -10, d: 5.1 }, // top right
+  { x: 500, y: 200, d: 3.6 }, // bottom right
 ];
 
 const Container = styled.div`
@@ -31,17 +31,29 @@ const Container = styled.div`
   }
 `;
 
+const TriangleContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+  width: 100%;
+  height: 100%;
+`;
+
 const Triangle = styled.span`
   position: absolute;
-  top: ${props => props.y}px;
-  left: ${props => props.x}px;
 
   display: inline-block;
   width: 60px;
   height: 60px;
 
-  transform: rotate(${props => props.animDuration * 40 + Math.random() * 50}deg)
-    scale(${props => props.animDuration / 10});
+  transform: ${({ x, y, animDuration }) =>
+    `
+      translate(${x}px, ${y}px)
+      rotate(${animDuration * 40 + Math.random() * 50}deg) 
+      scale(${animDuration / 10})
+    `};
 
   & > img {
     width: 100%;
@@ -65,11 +77,13 @@ const Background = () => (
   <Container>
     <img src={BackgroundImageTop} alt="Background shape" />
     <img src={BackgroundImageBottom} alt="Another background shape" />
-    {trianglePositions.map(({ x, y, d }) => (
-      <Triangle key={`${x}-${y}-${d}`} x={x} y={y} animDuration={d}>
-        <img src={TriangleImg} alt="A floating triangle" />
-      </Triangle>
-    ))}
+    <TriangleContainer>
+      {triangles.map(({ x, y, d }) => (
+        <Triangle key={`${x}-${y}-${d}`} x={x} y={y} animDuration={d}>
+          <img src={TriangleImg} alt="A floating triangle" />
+        </Triangle>
+      ))}
+    </TriangleContainer>
   </Container>
 );
 
