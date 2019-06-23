@@ -7,8 +7,6 @@ import { mediaQueryFor } from "~utils/tools";
 import Icon from "~components/Icon";
 import Link, { AnimLink } from "~components/Link";
 
-const TAB_INDEX_OFFSET = 5; // account for links in header, and mailing list signup
-
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -71,25 +69,25 @@ const Container = styled.div`
 const Footer = () => (
   <Container>
     <div className="socialContainer">
-      {comingSoonData.footerLinks.map((social, i) => (
+      {comingSoonData.footerLinks.map(social => (
         <Link
           key={social.name}
           href={social.linkTo}
           alt={social.name}
-          tabIndex={i + TAB_INDEX_OFFSET + 1}
+          tabIndex={0}
         >
           <Icon name={social.icon} size="2x" />
         </Link>
       ))}
     </div>
     <div className="linksContainer">
-      {comingSoonData.headerLinks.map((linkData, i) => (
+      {comingSoonData.headerLinks.map(linkData => (
         <span>
           <AnimLink
             key={linkData.label}
             href={linkData.link}
             hoverColor="primary"
-            tabIndex={i + 1}
+            tabIndex={0}
           >
             {linkData.label.toUpperCase()}
           </AnimLink>
