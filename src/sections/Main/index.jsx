@@ -67,7 +67,8 @@ const Main = ({ search: { signup } }) => (
         {signup === "success" ? (
           <>
             <span className="color--red">Thank you</span> for signing up! Keep
-            an eye out for more news from the TEDxUW team 😁
+            an eye out for more news from the{" "}
+            <span className="color--red">TEDx</span>UW team 😁
           </>
         ) : (
           <>
