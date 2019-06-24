@@ -144,8 +144,8 @@ const MailingListSignup = () => {
 
   return (
     <ContainerForm
-      netlify
       name="signups"
+      data-netlify="true"
       hasErrorSubtext={status === SIGNUP_STATES.INVALID}
       onSubmit={submitSignup}
     >
@@ -173,6 +173,7 @@ const MailingListSignup = () => {
         disabled={status === SIGNUP_STATES.SUBMITTING}
         tabIndex="5"
       />
+      <input type="hidden" name="form-name" value="signups" />
     </ContainerForm>
   );
 };

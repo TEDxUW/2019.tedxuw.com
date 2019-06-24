@@ -83,11 +83,7 @@ const Footer = () => (
     <div className="linksContainer">
       {comingSoonData.headerLinks.map(linkData => (
         <span key={linkData.label}>
-          <AnimLink
-            href={linkData.link}
-            hoverColor="primary"
-            tabIndex={0}
-          >
+          <AnimLink href={linkData.link} hoverColor="primary" tabIndex={0}>
             {linkData.label.toUpperCase()}
           </AnimLink>
         </span>
