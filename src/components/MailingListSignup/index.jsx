@@ -116,7 +116,7 @@ const MailingListSignup = ({ search: { signup } }) => {
 
   const submitSignup = useCallback(() => {
     if (isValidEmail(email)) {
-      setStatus(SIGNUP_STATES.SUBMITTED);
+      setStatus(SIGNUP_STATES.SUBMITTING);
     } else {
       setStatus(SIGNUP_STATES.INVALID);
     }
