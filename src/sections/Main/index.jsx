@@ -3,9 +3,9 @@ import styled from "styled-components";
 
 import PeopleImg from "~static/img/main.png";
 import { mediaQueryFor } from "~utils/tools";
+import withLocation from "~utils/withLocation";
 
 import MailingListSignup from "~components/MailingListSignup";
-import withLocation from "~utils/withLocation";
 
 const Container = styled.section`
   display: flex;

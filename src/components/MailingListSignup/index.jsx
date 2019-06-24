@@ -2,6 +2,7 @@ import React, { useState, useCallback } from "react";
 import styled from "styled-components";
 
 import { mediaQueryFor } from "~utils/tools";
+import withLocation from "~utils/withLocation";
 
 import Button from "~components/Button";
 
@@ -107,9 +108,11 @@ const SignupButton = styled(Button)`
   `}
 `;
 
-const MailingListSignup = () => {
+const MailingListSignup = ({ search: { signup } }) => {
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState(SIGNUP_STATES.READY);
+  const [status, setStatus] = useState(
+    signup === "success" ? SIGNUP_STATES.SUBMITTED : SIGNUP_STATES.READY
+  );
 
   const submitSignup = useCallback(() => {
     if (isValidEmail(email)) {
@@ -166,4 +169,4 @@ const MailingListSignup = () => {
   );
 };
 
-export default MailingListSignup;
+export default withLocation(MailingListSignup);
