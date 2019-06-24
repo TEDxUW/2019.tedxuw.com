@@ -143,6 +143,7 @@ const MailingListSignup = () => {
     <ContainerForm
       name="signups"
       data-netlify="true"
+      action="/"
       hasErrorSubtext={status === SIGNUP_STATES.INVALID}
       onSubmit={submitSignup}
     >
