@@ -15,8 +15,7 @@
     "jsx-a11y/tabindex-no-positive": "off",
     "prefer-arrow-callback": "error",
     "import/prefer-default-export": "off",
-    "arrow-body-style": ["error", "as-needed"],
-    "curly": ["error", "multi"]
+    "arrow-body-style": ["error", "as-needed"]
   },
   "settings": {
     "import/resolver": {

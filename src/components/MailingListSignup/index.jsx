@@ -111,30 +111,20 @@ const MailingListSignup = () => {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState(SIGNUP_STATES.READY);
 
-  const submitSignup = useCallback(
-    e => {
-      if (isValidEmail(email)) {
-        // eslint-disable-next-line
-        console.log("submitting email", email);
-        setStatus(SIGNUP_STATES.SUBMITTING);
-
-        // eslint-disable-next-line
-        console.log("successfully submitted email", email);
-        setStatus(SIGNUP_STATES.SUBMITTED);
-      } else {
-        // eslint-disable-next-line
-        console.log(email, "is invalid!");
-        setStatus(SIGNUP_STATES.INVALID);
-      }
-    },
-    [email, setStatus]
-  );
+  const submitSignup = useCallback(() => {
+    if (isValidEmail(email)) {
+      setStatus(SIGNUP_STATES.SUBMITTED);
+    } else {
+      setStatus(SIGNUP_STATES.INVALID);
+    }
+  }, [email, setStatus]);
 
   const handleInputChange = useCallback(
     e => {
       setEmail(e.target.value);
-      if (status === SIGNUP_STATES.INVALID && e.target.value === "")
+      if (status === SIGNUP_STATES.INVALID && e.target.value === "") {
         setStatus(SIGNUP_STATES.READY);
+      }
     },
     [setEmail, status, setStatus]
   );
@@ -143,7 +133,7 @@ const MailingListSignup = () => {
     <ContainerForm
       name="signups"
       data-netlify="true"
-      action="/"
+      action="/?signup=success"
       hasErrorSubtext={status === SIGNUP_STATES.INVALID}
       onSubmit={submitSignup}
     >

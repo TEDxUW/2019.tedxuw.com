@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useQueryParam, StringParam } from "use-query-params";
 
 import PeopleImg from "~static/img/main.png";
 import { mediaQueryFor } from "~utils/tools";
@@ -59,21 +60,34 @@ const MainImg = styled.img`
   `}
 `;
 
-const Main = () => (
-  <Container>
-    <MainLogic>
-      <Heading>
-        Join us on <span className="color--red">October 5, 2019</span> at{" "}
-        <span className="color--red">Hagey Hall</span> for the University of
-        Waterloo’s 7th TEDx conference!
-      </Heading>
-      <MailingListSignup />
-    </MainLogic>
-    <MainImg
-      src={PeopleImg}
-      alt="5 abstract illustrations of people reading books, playing music, and interacting with each other"
-    />
-  </Container>
-);
+const Main = () => {
+  const [signup] = useQueryParam("signup", StringParam);
+
+  return (
+    <Container>
+      <MainLogic>
+        <Heading>
+          {signup === "success" ? (
+            <>
+              <span className="color--red">Thank you</span> for signing up! Keep
+              an eye out for more news from the TEDxUW team 😁
+            </>
+          ) : (
+            <>
+              Join us on <span className="color--red">October 5, 2019</span> at{" "}
+              <span className="color--red">Hagey Hall</span> for the University
+              of Waterloo’s 7th TEDx conference!
+            </>
+          )}
+        </Heading>
+        <MailingListSignup />
+      </MainLogic>
+      <MainImg
+        src={PeopleImg}
+        alt="5 abstract illustrations of people reading books, playing music, and interacting with each other"
+      />
+    </Container>
+  );
+};
 
 export default Main;
