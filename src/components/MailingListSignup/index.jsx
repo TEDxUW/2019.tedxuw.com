@@ -2,6 +2,7 @@ import React, { useState, useCallback } from "react";
 import styled from "styled-components";
 
 import { mediaQueryFor } from "~utils/tools";
+import withLocation from "~utils/withLocation";
 
 import Button from "~components/Button";
 
@@ -24,7 +25,7 @@ const isValidEmail = email => {
   return regex.test(String(email).toLowerCase());
 };
 
-const Container = styled.div`
+const ContainerForm = styled.form`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -107,50 +108,44 @@ const SignupButton = styled(Button)`
   `}
 `;
 
-const MailingListSignup = () => {
+const MailingListSignup = ({ search: { signup } }) => {
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState(SIGNUP_STATES.READY);
+  const [status, setStatus] = useState(
+    signup === "success" ? SIGNUP_STATES.SUBMITTED : SIGNUP_STATES.READY
+  );
 
   const submitSignup = useCallback(() => {
     if (isValidEmail(email)) {
-      // eslint-disable-next-line
-      console.log("submitting email", email);
       setStatus(SIGNUP_STATES.SUBMITTING);
-
-      // eslint-disable-next-line
-      console.log("successfully submitted email", email);
-      setStatus(SIGNUP_STATES.SUBMITTED);
-      setEmail("");
     } else {
-      // eslint-disable-next-line
-      console.log(email, "is invalid!");
       setStatus(SIGNUP_STATES.INVALID);
     }
-  }, [email, setEmail, setStatus]);
+  }, [email, setStatus]);
 
   const handleInputChange = useCallback(
     e => {
       setEmail(e.target.value);
-      if (status === SIGNUP_STATES.INVALID && e.target.value === "")
+      if (status === SIGNUP_STATES.INVALID && e.target.value === "") {
         setStatus(SIGNUP_STATES.READY);
+      }
     },
     [setEmail, status, setStatus]
   );
-  const handleKeyDown = useCallback(
-    e => {
-      if (e.key === "Enter") submitSignup();
-    },
-    [submitSignup]
-  );
 
   return (
-    <Container hasErrorSubtext={status === SIGNUP_STATES.INVALID}>
+    <ContainerForm
+      name="signups"
+      data-netlify="true"
+      action="/?signup=success"
+      hasErrorSubtext={status === SIGNUP_STATES.INVALID}
+      onSubmit={submitSignup}
+    >
       <SignupInput
         tabIndex="4"
+        name="email"
         type="email"
         value={email}
         onChange={handleInputChange}
-        onKeyDown={handleKeyDown}
         required
         minLength={5}
         hasErrorSubtext={status === SIGNUP_STATES.INVALID}
@@ -166,10 +161,12 @@ const MailingListSignup = () => {
         backgroundColor="primary"
         type="submit"
         onClick={submitSignup}
+        disabled={status === SIGNUP_STATES.SUBMITTING}
         tabIndex="5"
       />
-    </Container>
+      <input type="hidden" name="form-name" value="signups" />
+    </ContainerForm>
   );
 };
 
-export default MailingListSignup;
+export default withLocation(MailingListSignup);
