@@ -24,7 +24,7 @@ const isValidEmail = email => {
   return regex.test(String(email).toLowerCase());
 };
 
-const Container = styled.div`
+const ContainerForm = styled.form`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -111,22 +111,27 @@ const MailingListSignup = () => {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState(SIGNUP_STATES.READY);
 
-  const submitSignup = useCallback(() => {
-    if (isValidEmail(email)) {
-      // eslint-disable-next-line
-      console.log("submitting email", email);
-      setStatus(SIGNUP_STATES.SUBMITTING);
+  const submitSignup = useCallback(
+    e => {
+      if (isValidEmail(email)) {
+        // eslint-disable-next-line
+        console.log("submitting email", email);
+        setStatus(SIGNUP_STATES.SUBMITTING);
 
-      // eslint-disable-next-line
-      console.log("successfully submitted email", email);
-      setStatus(SIGNUP_STATES.SUBMITTED);
-      setEmail("");
-    } else {
-      // eslint-disable-next-line
-      console.log(email, "is invalid!");
-      setStatus(SIGNUP_STATES.INVALID);
-    }
-  }, [email, setEmail, setStatus]);
+        // eslint-disable-next-line
+        console.log("successfully submitted email", email);
+        setStatus(SIGNUP_STATES.SUBMITTED);
+        setEmail("");
+      } else {
+        // eslint-disable-next-line
+        console.log(email, "is invalid!");
+        setStatus(SIGNUP_STATES.INVALID);
+      }
+
+      e.preventDefault();
+    },
+    [email, setEmail, setStatus]
+  );
 
   const handleInputChange = useCallback(
     e => {
@@ -136,21 +141,20 @@ const MailingListSignup = () => {
     },
     [setEmail, status, setStatus]
   );
-  const handleKeyDown = useCallback(
-    e => {
-      if (e.key === "Enter") submitSignup();
-    },
-    [submitSignup]
-  );
 
   return (
-    <Container hasErrorSubtext={status === SIGNUP_STATES.INVALID}>
+    <ContainerForm
+      netlify
+      name="signups"
+      hasErrorSubtext={status === SIGNUP_STATES.INVALID}
+      onSubmit={submitSignup}
+    >
       <SignupInput
         tabIndex="4"
+        name="email"
         type="email"
         value={email}
         onChange={handleInputChange}
-        onKeyDown={handleKeyDown}
         required
         minLength={5}
         hasErrorSubtext={status === SIGNUP_STATES.INVALID}
@@ -166,9 +170,10 @@ const MailingListSignup = () => {
         backgroundColor="primary"
         type="submit"
         onClick={submitSignup}
+        disabled={status === SIGNUP_STATES.SUBMITTING}
         tabIndex="5"
       />
-    </Container>
+    </ContainerForm>
   );
 };
 
