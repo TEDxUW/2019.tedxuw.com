@@ -27,12 +27,24 @@ const Container = styled.section`
   `}
 `;
 
+const MainLogic = styled.div`
+  margin-bottom: 40px;
+`;
+
 const Heading = styled.h1`
   text-align: center;
 
   & span.color--red {
     color: ${props => props.theme.colors.primary};
   }
+
+  ${mediaQueryFor.tablet`
+    font-size: 1.8em;
+  `}
+
+  ${mediaQueryFor.largeMobile`
+    font-size: 0.9em;
+  `}
 `;
 
 const MainImg = styled.img`
@@ -49,14 +61,14 @@ const MainImg = styled.img`
 
 const Main = () => (
   <Container>
-    <div>
+    <MainLogic>
       <Heading>
         Join us on <span className="color--red">October 5, 2019</span> at{" "}
         <span className="color--red">Hagey Hall</span> for the University of
         Waterloo’s 7th TEDx conference!
       </Heading>
       <MailingListSignup />
-    </div>
+    </MainLogic>
     <MainImg
       src={PeopleImg}
       alt="5 abstract illustrations of people reading books, playing music, and interacting with each other"
