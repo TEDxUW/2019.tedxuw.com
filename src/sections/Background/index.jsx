@@ -29,6 +29,14 @@ const Container = styled.div`
     bottom: -100px;
 
     width: 100vw;
+
+    ${mediaQueryFor.tablet`
+      bottom: -20px;
+    `}
+
+    ${mediaQueryFor.largeMobile`
+      bottom: 0;
+    `}
   }
 `;
 
