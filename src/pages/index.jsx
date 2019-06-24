@@ -1,6 +1,5 @@
 import React from "react";
 import styled, { ThemeProvider } from "styled-components";
-import { QueryParamProvider } from "use-query-params";
 
 import GlobalStyles from "~components/GlobalStyles";
 import GlobalHead from "~components/GlobalHead";
@@ -32,14 +31,12 @@ export default () => (
     <>
       <GlobalStyles />
       <GlobalHead />
-      <QueryParamProvider>
-        <PageContainer>
-          <Header />
-          <Main />
-          <Footer />
-        </PageContainer>
-        <Background />
-      </QueryParamProvider>
+      <PageContainer>
+        <Header />
+        <Main />
+        <Footer />
+      </PageContainer>
+      <Background />
     </>
   </ThemeProvider>
 );
