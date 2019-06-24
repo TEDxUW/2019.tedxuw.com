@@ -121,16 +121,13 @@ const MailingListSignup = () => {
         // eslint-disable-next-line
         console.log("successfully submitted email", email);
         setStatus(SIGNUP_STATES.SUBMITTED);
-        setEmail("");
       } else {
         // eslint-disable-next-line
         console.log(email, "is invalid!");
         setStatus(SIGNUP_STATES.INVALID);
       }
-
-      e.preventDefault();
     },
-    [email, setEmail, setStatus]
+    [email, setStatus]
   );
 
   const handleInputChange = useCallback(
