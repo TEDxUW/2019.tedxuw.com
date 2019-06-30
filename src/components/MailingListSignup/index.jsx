@@ -124,7 +124,7 @@ const MailingListSignup = () => {
       setEmail(e.target.value);
 
       // clear invalid msg if all input is deleted (essentially typing new email)
-      if (status === SIGNUP_STATES.INVALID && e.target.value === "") {
+      if (status === SIGNUP_STATES.INVALID) {
         setStatus(SIGNUP_STATES.READY);
       }
     },
