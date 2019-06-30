@@ -135,7 +135,10 @@ const MailingListSignup = ({ search: { signup } }) => {
   return (
     <ContainerForm
       name="signups"
+      netlify
+      method="post"
       data-netlify="true"
+      data-netlify-honeypot="bot-field"
       action="/?signup=success"
       hasErrorSubtext={status === SIGNUP_STATES.INVALID}
       onSubmit={submitSignup}
@@ -164,6 +167,10 @@ const MailingListSignup = ({ search: { signup } }) => {
         disabled={status === SIGNUP_STATES.SUBMITTING}
         tabIndex="5"
       />
+      <p hidden>
+        Don’t fill this out: <input name="bot-field" />
+      </p>
+      <input type="hidden" name="form-name" value="signups" />
     </ContainerForm>
   );
 };
