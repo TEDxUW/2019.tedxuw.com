@@ -2,7 +2,6 @@ import React, { useState, useCallback } from "react";
 import styled from "styled-components";
 
 import { mediaQueryFor } from "~utils/tools";
-import withLocation from "~utils/withLocation";
 
 import Button from "~components/Button";
 
@@ -108,15 +107,13 @@ const SignupButton = styled(Button)`
   `}
 `;
 
-const MailingListSignup = ({ search: { signup } }) => {
+const MailingListSignup = () => {
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState(
-    signup === "success" ? SIGNUP_STATES.SUBMITTED : SIGNUP_STATES.READY
-  );
+  const [status, setStatus] = useState(SIGNUP_STATES.READY);
 
   const submitSignup = useCallback(() => {
     if (isValidEmail(email)) {
-      setStatus(SIGNUP_STATES.SUBMITTED);
+      setStatus(SIGNUP_STATES.SUBMITTING);
     } else {
       setStatus(SIGNUP_STATES.INVALID);
     }
@@ -125,22 +122,20 @@ const MailingListSignup = ({ search: { signup } }) => {
   const handleInputChange = useCallback(
     e => {
       setEmail(e.target.value);
+
+      // clear invalid msg if all input is deleted (essentially typing new email)
       if (status === SIGNUP_STATES.INVALID && e.target.value === "") {
         setStatus(SIGNUP_STATES.READY);
       }
-
-      if (signup === "success") {
-        setStatus(SIGNUP_STATES.READY);
-      }
     },
-    [status, signup]
+    [status]
   );
 
   return (
     <ContainerForm
       name="signups"
-      netlify
       method="post"
+      netlify
       data-netlify="true"
       data-netlify-honeypot="bot-field"
       action="/?signup=success"
@@ -148,37 +143,35 @@ const MailingListSignup = ({ search: { signup } }) => {
       onSubmit={submitSignup}
     >
       <SignupInput
-        tabIndex="4"
         name="email"
         type="email"
-        value={email}
-        onChange={handleInputChange}
         required
         minLength={5}
+        value={email}
+        tabIndex="4"
         hasErrorSubtext={status === SIGNUP_STATES.INVALID}
+        onChange={handleInputChange}
       />
       <SignupButton
         label={BUTTON_TEXT[status]}
         icon={
-          (status === SIGNUP_STATES.READY ||
-            status === SIGNUP_STATES.INVALID) &&
-          !(signup === "success")
+          status === SIGNUP_STATES.READY || status === SIGNUP_STATES.INVALID
             ? "arrow-right"
             : undefined
         }
         color="white"
         backgroundColor="primary"
-        type="submit"
-        onClick={submitSignup}
-        disabled={status === SIGNUP_STATES.SUBMITTING}
         tabIndex="5"
+        type="submit"
+        disabled={status === SIGNUP_STATES.INVALID}
+        onClick={submitSignup}
       />
       <p hidden>
-        Don’t fill this out: <input name="bot-field" />
+        Don’t fill this out if you&apos;re human: <input name="bot-field" />
       </p>
       <input type="hidden" name="form-name" value="signups" />
     </ContainerForm>
   );
 };
 
-export default withLocation(MailingListSignup);
+export default MailingListSignup;
