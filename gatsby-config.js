@@ -14,7 +14,6 @@ module.exports = {
         logo: "./src/static/img/favicon.png",
       },
     },
-    { resolve: `gatsby-plugin-offline` },
     {
       resolve: `gatsby-plugin-alias-imports`,
       options: {

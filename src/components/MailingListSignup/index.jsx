@@ -135,6 +135,8 @@ const MailingListSignup = ({ search: { signup } }) => {
   return (
     <ContainerForm
       name="signups"
+      netlify
+      method="post"
       data-netlify="true"
       action="/?signup=success"
       hasErrorSubtext={status === SIGNUP_STATES.INVALID}
