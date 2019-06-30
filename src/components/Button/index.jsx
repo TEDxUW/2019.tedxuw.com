@@ -25,7 +25,7 @@ const StyledButton = styled.button`
 
   & .label {
     transition: transform 250ms;
-    transform: ${({ hasIcon }) => (hasIcon ? "translateX(5px)" : "none")};
+    transform: ${({ hasIcon }) => (!hasIcon ? "none" : "translateX(5px)")};
   }
 
   & .icon {
