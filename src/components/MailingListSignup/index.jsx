@@ -128,8 +128,12 @@ const MailingListSignup = ({ search: { signup } }) => {
       if (status === SIGNUP_STATES.INVALID && e.target.value === "") {
         setStatus(SIGNUP_STATES.READY);
       }
+
+      if (signup === "success") {
+        setStatus(SIGNUP_STATES.READY);
+      }
     },
-    [setEmail, status, setStatus]
+    [status, signup]
   );
 
   return (
@@ -158,7 +162,9 @@ const MailingListSignup = ({ search: { signup } }) => {
         icon={
           (status === SIGNUP_STATES.READY ||
             status === SIGNUP_STATES.INVALID) &&
-          "arrow-right"
+          !(signup === "success")
+            ? "arrow-right"
+            : undefined
         }
         color="white"
         backgroundColor="primary"
